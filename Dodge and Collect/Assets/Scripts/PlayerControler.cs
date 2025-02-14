@@ -34,15 +34,26 @@ public class FollowMouse : MonoBehaviour
 
     private void FollowMousePosistion(float maxSpeed)
     {
-        transform.position = Vector2.MoveTowards(transform.position, GetWorldPositionFromMouse(), maxSpeed * Time.deltaTime);
+        
         Vector3 WorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3 Difference = WorldPoint - transform.position;
         Difference.Normalize();
 
-        float RotationZ = Mathf.Atan2(Difference.y, Difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, RotationZ - 90);
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;
 
+        Vector3 direction = mousePosition - transform.position;
+        
+        transform.position = Vector2.MoveTowards(transform.position, GetWorldPositionFromMouse(), maxSpeed * Time.deltaTime);
+        
+        if (direction.magnitude > 0.00001f)
+        {
+            float RotationZ = Mathf.Atan2(Difference.y, Difference.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, RotationZ - 90);
+
+        }
+                        
     }
 
 
@@ -64,6 +75,7 @@ public class FollowMouse : MonoBehaviour
     private Vector2 GetWorldPositionFromMouse()
     {
         return mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
     }
 
 
