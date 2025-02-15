@@ -17,9 +17,11 @@ public class Bulletspawner : MonoBehaviour
     [SerializeField] private SpawnerType spawnerType;
     [SerializeField] private float firingRate = 1f;
     [SerializeField] private float startDelay = 1f;
+    [SerializeField] private float speedIncrease = 0.01f;
 
     private GameObject spawnedBullet;
     private float timer = 0f;
+    private float timer2 = 0f;
     private float time = 0f;
 
 
@@ -34,7 +36,20 @@ public class Bulletspawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        timer2 += Time.deltaTime;
         time += Time.deltaTime;
+        
+        if (timer2 >= 1)
+        {
+            timer2 = 0f;
+            if (firingRate > 0.1f)
+            {
+                firingRate -= speedIncrease;
+            }
+        }
+        
+        
+        
         if (time >= startDelay)
         {
             if (spawnerType == SpawnerType.Spin180Up)

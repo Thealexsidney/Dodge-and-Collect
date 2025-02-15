@@ -8,8 +8,13 @@ public class FollowMouse : MonoBehaviour
 {
     private Camera mainCamera;
 
+    private bool isPaused = false;
+
     public int Health;
     public TextMeshProUGUI healthText;
+
+    public int Coins;
+    public TextMeshProUGUI coinsText;
 
     [SerializeField]
     private float maxSpeed = 10f;
@@ -20,17 +25,25 @@ public class FollowMouse : MonoBehaviour
     {
         mainCamera = Camera.main;
         healthText.text = "Health: " + Health;
+        coinsText.text = "Coins: " + Coins;
     }
 
     // Update is called once per frame
     void Update()
     {
         FollowMousePosistion(maxSpeed);
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
         
     }
 
-  
+    private void TogglePause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0f : 1f;
+    }
 
     private void FollowMousePosistion(float maxSpeed)
     {
@@ -59,16 +72,27 @@ public class FollowMouse : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Health--;
-
-        Destroy(other.gameObject);
-
-        healthText.text = "Health: " + Health;
-
-        if (Health <= 0) 
+        if (other.CompareTag("Bullet"))
         {
-            SceneManager.LoadScene("GameOver");
-            Health = 3;
+
+            Health--;
+
+            Destroy(other.gameObject);
+
+            healthText.text = "Health: " + Health;
+
+            if (Health <= 0)
+            {
+                SceneManager.LoadScene("GameOver");
+                Health = 3;
+            }
+
+        }
+        if (other.CompareTag("Coin"))
+        {
+            Coins++;
+            Destroy(other.gameObject);
+            coinsText.text = "Coins: " + Coins;
         }
 
     }
