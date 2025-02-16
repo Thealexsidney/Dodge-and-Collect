@@ -16,6 +16,8 @@ public class FollowMouse : MonoBehaviour
     public int Coins;
     public TextMeshProUGUI coinsText;
 
+    public GameObject pauseMenu;
+
     [SerializeField]
     private float maxSpeed = 10f;
     
@@ -43,6 +45,7 @@ public class FollowMouse : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0f : 1f;
+        pauseMenu.SetActive(isPaused);
     }
 
     private void FollowMousePosistion(float maxSpeed)
@@ -62,9 +65,12 @@ public class FollowMouse : MonoBehaviour
         
         if (direction.magnitude > 0.00001f)
         {
-            float RotationZ = Mathf.Atan2(Difference.y, Difference.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, RotationZ - 90);
-
+            if (!isPaused)
+            {
+                float RotationZ = Mathf.Atan2(Difference.y, Difference.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, RotationZ - 90);
+            }
+            
         }
                         
     }
