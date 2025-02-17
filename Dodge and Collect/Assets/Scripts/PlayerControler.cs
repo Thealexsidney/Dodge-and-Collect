@@ -41,7 +41,7 @@ public class FollowMouse : MonoBehaviour
         
     }
 
-    private void TogglePause()
+    public void TogglePause()
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0f : 1f;
@@ -106,6 +106,11 @@ public class FollowMouse : MonoBehaviour
     {
         return mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
 
