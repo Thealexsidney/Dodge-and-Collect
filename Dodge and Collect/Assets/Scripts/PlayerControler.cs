@@ -11,6 +11,7 @@ public class FollowMouse : MonoBehaviour
     private bool isPaused = false;
 
     public int Health;
+    public int maxHealth;
     public TextMeshProUGUI healthText;
 
     public int Coins;
@@ -26,7 +27,7 @@ public class FollowMouse : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        healthText.text = "Health: " + Health;
+        healthText.text = "Health: " + Health + "/" + maxHealth;
         coinsText.text = "Coins: " + Coins;
     }
 
@@ -85,12 +86,12 @@ public class FollowMouse : MonoBehaviour
 
             Destroy(other.gameObject);
 
-            healthText.text = "Health: " + Health;
+            healthText.text = "Health: " + Health + "/" + maxHealth;
 
             if (Health <= 0)
             {
                 SceneManager.LoadScene("GameOver");
-                Health = 3;
+                Health = maxHealth;
             }
 
         }
@@ -99,6 +100,16 @@ public class FollowMouse : MonoBehaviour
             Coins++;
             Destroy(other.gameObject);
             coinsText.text = "Coins: " + Coins;
+        }
+        if (other.CompareTag("Heal"))
+        {
+            if (Health < maxHealth)
+            {
+                Health++;
+                Destroy(other.gameObject);
+                healthText.text = "Health: " + Health + "/" + maxHealth;
+            }
+            
         }
 
     }

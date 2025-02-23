@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Coin
+  - Heal
   layers:
   - Default
   - TransparentFX
