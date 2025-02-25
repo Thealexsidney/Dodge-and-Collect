@@ -12,7 +12,7 @@ public class SimpleBullet : MonoBehaviour
 
     private Vector2 spawnPoint;
     private float timer = 0f;
-    
+    public GameObject explosion;
     
     // Start is called before the first frame update
     void Start()
@@ -34,5 +34,13 @@ public class SimpleBullet : MonoBehaviour
         float x = timer * speed * transform.right.x;
         float y = timer * speed * transform.right.y;
         return new Vector2(x+spawnPoint.x, y+spawnPoint.y);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Instantiate(explosion,transform.position,Quaternion.identity);
+        }
     }
 }

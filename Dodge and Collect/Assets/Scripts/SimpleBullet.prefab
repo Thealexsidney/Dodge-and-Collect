@@ -50,6 +50,7 @@ MonoBehaviour:
   bulletLife: 10
   rotation: 0
   speed: 5
+  explosion: {fileID: 8121677272890810086, guid: 3ec6880b5626ee7428edc9d25ebec2ff, type: 3}
 --- !u!58 &1601625404510124081
 CircleCollider2D:
   m_ObjectHideFlags: 0

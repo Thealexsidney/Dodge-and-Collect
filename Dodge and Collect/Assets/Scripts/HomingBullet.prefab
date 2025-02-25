@@ -115,6 +115,7 @@ MonoBehaviour:
   target: {fileID: 0}
   bulletSplit: {fileID: 11902011049437352, guid: 1f13c036a72b8954ea41c51bac1221ae, type: 3}
   splitAmount: 8
+  explosion: {fileID: 8121677272890810086, guid: 192b5e799de0e4e458172504f23edeff, type: 3}
 --- !u!1 &5073374530029821873
 GameObject:
   m_ObjectHideFlags: 0

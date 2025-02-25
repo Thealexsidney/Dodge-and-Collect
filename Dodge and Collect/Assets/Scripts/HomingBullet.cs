@@ -13,7 +13,7 @@ public class HomingBullet : MonoBehaviour
     public int splitAmount;
 
     private float timer = 0f;
-
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +63,13 @@ public class HomingBullet : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             Vector2 direction = rotation * Vector2.up;
             rb.velocity = direction * speed;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
         }
     }
 }

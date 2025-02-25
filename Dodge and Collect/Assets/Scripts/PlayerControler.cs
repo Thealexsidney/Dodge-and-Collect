@@ -12,12 +12,16 @@ public class FollowMouse : MonoBehaviour
 
     public int Health;
     public int maxHealth;
+    public float dodgeChance;
     public TextMeshProUGUI healthText;
 
     public int Coins;
     public TextMeshProUGUI coinsText;
 
     public GameObject pauseMenu;
+    
+    public float timeAlive;
+    public TextMeshProUGUI timeText;
 
     [SerializeField]
     private float maxSpeed = 10f;
@@ -39,7 +43,8 @@ public class FollowMouse : MonoBehaviour
         {
             TogglePause();
         }
-        
+        timeAlive = Time.time;
+        timeText.text = "Time: " + timeAlive.ToString("F2");
     }
 
     public void TogglePause()
@@ -81,18 +86,20 @@ public class FollowMouse : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-
-            Health--;
-
-            Destroy(other.gameObject);
-
-            healthText.text = "Health: " + Health + "/" + maxHealth;
-
-            if (Health <= 0)
+            if (Random.value > dodgeChance)
             {
-                SceneManager.LoadScene("GameOver");
-                Health = maxHealth;
+                Health--;
+                                
+                healthText.text = "Health: " + Health + "/" + maxHealth;
+
+                if (Health <= 0)
+                {
+                    SceneManager.LoadScene("GameOver");
+                    Health = maxHealth;
+                }
             }
+            
+            Destroy(other.gameObject);
 
         }
         if (other.CompareTag("Coin"))
@@ -124,6 +131,47 @@ public class FollowMouse : MonoBehaviour
         Application.Quit();
     }
 
+    public void HealthUp()
+    {
+        if (maxHealth < 20)
+        {
+            if (Coins >= 1)
+            {
+                Coins -= 1;
+                maxHealth ++;
+                Health++;
+                healthText.text = "Health: " + Health + "/" + maxHealth;
+                coinsText.text = "Coins: " + Coins;
+            }
+        }
+    }
 
+    public void SpeedUp()
+    {
+        if(maxSpeed < 10)
+        {
+            if(Coins >= 1)
+            {
+                Coins -= 1;
+                maxSpeed += 0.5f;
+                coinsText.text = "Coins: " + Coins;
+            }
+        }
+                
+    }
+
+    public void DogdeUp()
+    {
+        if (dodgeChance < 0.5)
+        {
+            if (Coins >= 5)
+            {
+                Coins -= 5;
+                dodgeChance += 0.05f;
+                coinsText.text = "Coins: " + Coins;
+            }
+        }
+
+    }
 
 }
