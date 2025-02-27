@@ -23,6 +23,8 @@ public class FollowMouse : MonoBehaviour
     public float timeAlive;
     public TextMeshProUGUI timeText;
 
+    
+
     [SerializeField]
     private float maxSpeed = 10f;
     
@@ -33,6 +35,7 @@ public class FollowMouse : MonoBehaviour
         mainCamera = Camera.main;
         healthText.text = "Health: " + Health + "/" + maxHealth;
         coinsText.text = "Coins: " + Coins;
+        timeAlive = 0;
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class FollowMouse : MonoBehaviour
         {
             TogglePause();
         }
-        timeAlive = Time.time;
+        timeAlive =  timeAlive + 1*Time.deltaTime;
         timeText.text = "Time: " + timeAlive.ToString("F2");
     }
 
