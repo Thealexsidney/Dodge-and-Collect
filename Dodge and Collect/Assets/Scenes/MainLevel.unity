@@ -2830,6 +2830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserLife: 5
+  laserEmmiter: {fileID: 2969654555613015295, guid: 516ee9255898e074bb3b2908c7197622, type: 3}
 --- !u!120 &1366275460
 LineRenderer:
   serializedVersion: 2

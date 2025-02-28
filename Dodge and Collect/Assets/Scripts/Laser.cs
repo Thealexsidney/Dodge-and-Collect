@@ -5,6 +5,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     public float laserLife = 5;
+    public GameObject laserEmmiter;
 
     private float timer = 0;
     private LineRenderer lineRenderer;
@@ -23,6 +24,8 @@ public class Laser : MonoBehaviour
         lineRenderer.SetPosition(0, pointA);
         lineRenderer.SetPosition(1, pointB);
 
+        Instantiate(laserEmmiter, pointA, Quaternion.identity);
+        Instantiate(laserEmmiter, pointB, Quaternion.identity);
 
     }
 
