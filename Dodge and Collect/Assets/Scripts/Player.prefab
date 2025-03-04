@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 7087740563849788830}
   - component: {fileID: 6297728819875914977}
   - component: {fileID: 7301653947578568623}
-  - component: {fileID: 9119584810739378459}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -132,14 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
-  maxHealth: 0
-  dodgeChance: 0
   healthText: {fileID: 0}
-  Coins: 0
-  coinsText: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  timeAlive: 0
-  timeText: {fileID: 0}
   maxSpeed: 5
 --- !u!60 &7301653947578568623
 PolygonCollider2D:
@@ -189,30 +181,3 @@ PolygonCollider2D:
       - {x: -0.0035017729, y: 0.7189493}
       - {x: -0.39197046, y: -0.69387734}
   m_UseDelaunayMesh: 0
---- !u!50 &9119584810739378459
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8144651083619747874}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
