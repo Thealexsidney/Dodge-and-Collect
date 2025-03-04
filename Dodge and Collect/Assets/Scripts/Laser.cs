@@ -9,7 +9,8 @@ public class Laser : MonoBehaviour
 
     private float timer = 0;
     private LineRenderer lineRenderer;
-    
+    private EdgeCollider2D edgeCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class Laser : MonoBehaviour
         
         
         lineRenderer = GetComponent<LineRenderer>();
+        edgeCollider = GetComponent<EdgeCollider2D>();
 
         Vector2 pointA = RandomPointOnScreen();
         Vector2 pointB = RandomPointOnScreen();
@@ -26,6 +28,9 @@ public class Laser : MonoBehaviour
 
         Instantiate(laserEmmiter, pointA, Quaternion.identity);
         Instantiate(laserEmmiter, pointB, Quaternion.identity);
+
+        Vector2[] colliderPoints = { pointA, pointB };
+        edgeCollider.points = colliderPoints;
 
     }
 

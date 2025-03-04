@@ -105,6 +105,24 @@ public class FollowMouse : MonoBehaviour
             Destroy(other.gameObject);
 
         }
+        if (other.CompareTag("Laser"))
+        {
+            if (Random.value > dodgeChance)
+            {
+                Health--;
+
+                healthText.text = "Health: " + Health + "/" + maxHealth;
+
+                if (Health <= 0)
+                {
+                    SceneManager.LoadScene("GameOver");
+                    Health = maxHealth;
+                }
+            }
+
+            
+
+        }
         if (other.CompareTag("Coin"))
         {
             Coins++;

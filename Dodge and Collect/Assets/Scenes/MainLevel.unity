@@ -2637,11 +2637,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087740563849788830, guid: 6fbf4fcb6d9b7b047b352bfced3fca2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.013805151
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7087740563849788830, guid: 6fbf4fcb6d9b7b047b352bfced3fca2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.054677725
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7087740563849788830, guid: 6fbf4fcb6d9b7b047b352bfced3fca2e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2810,9 +2810,11 @@ GameObject:
   - component: {fileID: 1366275461}
   - component: {fileID: 1366275460}
   - component: {fileID: 1366275459}
+  - component: {fileID: 1366275463}
+  - component: {fileID: 1366275462}
   m_Layer: 0
   m_Name: LIneDrawer
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2944,12 +2946,80 @@ Transform:
   m_GameObject: {fileID: 1366275458}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.092206, y: -0.9783489, z: -10.0397835}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1366275462
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366275458}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!68 &1366275463
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366275458}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.5
+  m_Points:
+  - {x: -0.05, y: 0}
+  - {x: 0.05, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1470142039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8144651083619747874, guid: 6fbf4fcb6d9b7b047b352bfced3fca2e, type: 3}
