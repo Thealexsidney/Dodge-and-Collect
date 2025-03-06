@@ -22,7 +22,7 @@ public class FollowMouse : MonoBehaviour
     
     public float timeAlive;
     public TextMeshProUGUI timeText;
-
+    public TextMeshProUGUI statsText;
     
 
     [SerializeField]
@@ -48,6 +48,8 @@ public class FollowMouse : MonoBehaviour
         }
         timeAlive =  timeAlive + 1*Time.deltaTime;
         timeText.text = "Time: " + timeAlive.ToString("F2");
+
+        statsText.text = "Max Health: " + maxHealth + "\nMax Speed: " + maxSpeed + "\nDodge: " + dodgeChance;
     }
 
     public void TogglePause()
